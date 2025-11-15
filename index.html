@@ -3,78 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica Programada 2 - JavaScript</title>
+    <title>ConnectaPet - Iniciar sesión</title>
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tu CSS original -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- CSS global del proyecto -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="d-flex align-items-center min-vh-100">
-    <div class="container">
-        <!-- Página de inicio de sesión -->
-        <div id="login-page" class="row justify-content-center">
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- HEADER / MENÚ PRINCIPAL -->
+    <header class="w-100">
+        <nav class="d-flex justify-content-between align-items-center px-4 py-3 shadow-sm bg-white w-100">
+            <div class="fw-bold fs-4 text-primary">
+                ConnectaPet
+            </div>
+
+            <ul class="d-flex gap-4 list-unstyled mb-0">
+                <li><a href="home.html" class="text-decoration-none text-dark">Inicio</a></li>
+                <li><a href="asociaciones.html" class="text-decoration-none text-dark">Asociaciones</a></li>
+                <li><a href="transparencia.html" class="text-decoration-none text-dark">Transparencia</a></li>
+                <li><a href="registro.html" class="text-decoration-none text-dark">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL (CENTRADO) -->
+    <div class="container d-flex justify-content-center align-items-center flex-grow-1">
+
+        <!-- LOGIN -->
+        <div id="login-page" class="row justify-content-center w-100">
             <div class="col-md-6 col-lg-5">
                 <div class="card shadow">
                     <div class="card-body p-4">
+                        
                         <h1 class="text-center mb-4 text-primary">Iniciar Sesión</h1>
+
                         <form id="login-form">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Usuario:</label>
                                 <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario" required>
                             </div>
+
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña:</label>
                                 <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
                             </div>
+
                             <button type="submit" class="btn btn-primary w-100 py-2">Iniciar Sesión</button>
+
                             <div class="alert alert-danger mt-3 mb-0 text-center" id="error-message" style="display: none;">
                                 Usuario o contraseña incorrectos. Inténtalo de nuevo.
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Página principal de Scrum -->
-        <div id="scrum-page" class="row justify-content-center" style="display: none;">
-            <div class="col-12">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <h1 class="text-center mb-4 text-primary">Introducción a Scrum</h1>
-                        
-                        <div class="scrum-intro mb-4 pb-3 border-bottom">
-                            <h2 class="text-purple">¿Qué es Scrum?</h2>
-                            <p class="mb-3">Scrum es un marco de trabajo ágil utilizado para el desarrollo de productos complejos. Se basa en principios de transparencia, inspección y adaptación, y se centra en la entrega iterativa e incremental de valor.</p>
-                            <p>En Scrum, el trabajo se organiza en sprints de tiempo fijo, generalmente de 2 a 4 semanas, durante los cuales el equipo trabaja para completar un conjunto predeterminado de tareas.</p>
-                        </div>
-                        
-                        <div class="event-selector mb-4">
-                            <h2 class="text-purple mb-3">Eventos de Scrum</h2>
-                            <div class="row g-3 align-items-end">
-                                <div class="col-md-8">
-                                    <label for="scrum-events" class="form-label">Selecciona un evento:</label>
-                                    <select class="form-select" id="scrum-events">
-                                        <option value="" disabled selected>Selecciona un evento de Scrum</option>
-                                        <option value="sprint">Sprint</option>
-                                        <option value="sprint-planning">Sprint Planning</option>
-                                        <option value="daily-scrum">Daily Scrum</option>
-                                        <option value="sprint-review">Sprint Review</option>
-                                        <option value="sprint-retrospective">Sprint Retrospective</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <button id="view-details" class="btn btn-primary w-100">Ver detalles</button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="event-details alert alert-info" id="event-details" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
+
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
