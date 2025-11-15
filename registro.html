@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectaPet - Registro</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS original -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS global del proyecto -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- HEADER / MENÚ PRINCIPAL -->
+    <header class="w-100">
+        <nav class="d-flex justify-content-between align-items-center px-4 py-3 shadow-sm bg-white w-100">
+            <div class="fw-bold fs-4 text-primary">
+                ConnectaPet
+            </div>
+
+            <ul class="d-flex gap-4 list-unstyled mb-0">
+                <li><a href="home.html" class="text-decoration-none text-dark">Inicio</a></li>
+                <li><a href="asociaciones.html" class="text-decoration-none text-dark">Asociaciones</a></li>
+                <li><a href="transparencia.html" class="text-decoration-none text-dark">Transparencia</a></li>
+                <li><a href="registro.html" class="text-decoration-none text-dark fw-semibold">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container flex-grow-1 py-5">
+        <header class="mb-4 text-center">
+            <h1 class="fw-bold text-white mb-2">Crear cuenta en ConnectaPet</h1>
+            <p class="text-light mb-0">
+                Elige el tipo de cuenta que deseas crear para comenzar a usar la plataforma.
+            </p>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-body p-4">
+                        <!-- Selector de tipo de registro -->
+                        <div class="mb-4 d-flex justify-content-center gap-3">
+                            <button id="btnDonante" class="btn btn-primary">
+                                Registrarme como donante
+                            </button>
+                            <button id="btnAsociacion" class="btn btn-outline-primary">
+                                Registrar una asociación
+                            </button>
+                        </div>
+
+                        <!-- Formulario Donante -->
+                        <form id="formDonante">
+                            <h2 class="h4 text-primary mb-3">Datos de donante</h2>
+
+                            <div class="mb-3">
+                                <label for="donanteNombre" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="donanteNombre" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="donanteCorreo" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="donanteCorreo" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="donanteTelefono" class="form-label">Teléfono (opcional)</label>
+                                <input type="tel" class="form-control" id="donanteTelefono">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="donanteProvincia" class="form-label">Provincia</label>
+                                <select id="donanteProvincia" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona una provincia</option>
+                                    <option>San José</option>
+                                    <option>Alajuela</option>
+                                    <option>Heredia</option>
+                                    <option>Cartago</option>
+                                    <option>Guanacaste</option>
+                                    <option>Puntarenas</option>
+                                    <option>Limón</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="donantePassword" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="donantePassword" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="donantePassword2" class="form-label">Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="donantePassword2" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="donanteAcepta" required>
+                                <label class="form-check-label" for="donanteAcepta">
+                                    Acepto los términos de uso y la política de privacidad.
+                                </label>
+                            </div>
+                        </form>
+
+                        <!-- Formulario Asociación -->
+                        <form id="formAsociacion" style="display: none;">
+                            <h2 class="h4 text-primary mb-3">Datos de la asociación</h2>
+
+                            <div class="mb-3">
+                                <label for="asoNombre" class="form-label">Nombre de la asociación</label>
+                                <input type="text" class="form-control" id="asoNombre" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asoCorreo" class="form-label">Correo de contacto</label>
+                                <input type="email" class="form-control" id="asoCorreo" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asoTelefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="asoTelefono" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asoProvincia" class="form-label">Provincia</label>
+                                <select id="asoProvincia" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona una provincia</option>
+                                    <option>San José</option>
+                                    <option>Alajuela</option>
+                                    <option>Heredia</option>
+                                    <option>Cartago</option>
+                                    <option>Guanacaste</option>
+                                    <option>Puntarenas</option>
+                                    <option>Limón</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asoDescripcion" class="form-label">Descripción de la asociación</label>
+                                <textarea id="asoDescripcion" class="form-control" rows="3" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asoTipo" class="form-label">Tipo de organización</label>
+                                <select id="asoTipo" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option>Refugio y adopción</option>
+                                    <option>Esterilización y campañas educativas</option>
+                                    <option>Protección de colonias felinas</option>
+                                    <option>Otra organización de bienestar animal</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="asoPassword" class="form-label">Contraseña de acceso</label>
+                                    <input type="password" class="form-control" id="asoPassword" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="asoPassword2" class="form-label">Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="asoPassword2" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="asoAcepta" required>
+                                <label class="form-check-label" for="asoAcepta">
+                                    Confirmo que la información ingresada es verdadera y que la asociación está
+                                    legalmente constituida.
+                                </label>
+                            </div>
+                        </form>
+
+                        <!-- Mensaje de simulación -->
+                        <div id="registroMensaje" class="alert alert-success text-center py-2 mt-3" style="display: none;">
+                            ¡Registro simulado exitoso! Esta pantalla es una demostración del flujo de registro.
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="index.html" class="btn btn-outline-secondary">
+                                Volver a inicio de sesión
+                            </a>
+                            <button id="btnEnviarRegistro" class="btn btn-primary">
+                                Completar registro
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-3 text-center text-light-50">
+        <small>© 2024 ConnectaPet. Formulario de registro simulado.</small>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="javascript/registro.js"></script>
+</body>
+</html>
