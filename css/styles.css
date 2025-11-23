@@ -1,97 +1,164 @@
-/* Estilos personalizados para complementar Bootstrap */
 :root {
-    --primary-color: #2575fc;
-    --secondary-color: #6a11cb;
-    --purple-color: #6a11cb;
+    --primary-color: #4e73df;
+    --secondary-color: #1cc88a;
+    --accent-color: #36b9cc;
+    --dark-color: #2e59d9;
+    --light-color: #f8f9fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    min-height: 100vh;
-    padding: 20px;
+    color: #333;
 }
 
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    color: white;
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-image {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+/* Cards */
 .card {
     border: none;
     border-radius: 15px;
-    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-body {
-    padding: 2rem;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
 
-h1 {
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-h2.text-purple {
-    color: var(--purple-color);
-    font-weight: 600;
-}
-
+/* Buttons */
 .btn-primary {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    background-color: var(--primary-color);
     border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
+    background-color: var(--dark-color);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.form-control, .form-select {
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 10px 15px;
-    transition: border-color 0.3s;
-}
-
-.form-control:focus, .form-select:focus {
+.btn-outline-primary {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(37, 117, 252, 0.25);
-}
-
-.alert-info {
-    border-left: 5px solid var(--primary-color);
-    border-radius: 8px;
-}
-
-.event-details h3 {
     color: var(--primary-color);
-    margin-bottom: 15px;
 }
 
-/* Responsividad adicional */
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Feature Icons */
+.feature-icon {
+    color: var(--primary-color);
+}
+
+/* Progress bars */
+.progress {
+    height: 10px;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.8);
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+/* Section spacing */
+section {
+    padding: 80px 0;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .card-body {
-        padding: 1.5rem;
+    .hero-section {
+        text-align: center;
+        padding: 100px 0 50px;
     }
     
-    h1 {
-        font-size: 1.8rem;
+    .display-4 {
+        font-size: 2rem;
     }
 }
 
-@media (max-width: 576px) {
-    body {
-        padding: 10px;
-    }
-    
-    .card-body {
-        padding: 1.25rem;
-    }
-    
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    h2 {
-        font-size: 1.4rem;
-    }
+/* Custom utilities */
+.rounded-lg {
+    border-radius: 15px;
+}
+
+.shadow-custom {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Login/Register forms */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    padding: 20px 0;
+}
+
+.auth-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Association cards */
+.association-card {
+    transition: all 0.3s ease;
+}
+
+.association-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Dashboard styles */
+.dashboard-card {
+    border-left: 4px solid var(--primary-color);
+}
+
+.dashboard-card.success {
+    border-left-color: var(--secondary-color);
+}
+
+.dashboard-card.info {
+    border-left-color: var(--accent-color);
 }

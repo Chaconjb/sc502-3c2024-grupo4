@@ -3,78 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica Programada 2 - JavaScript</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>ConnectaPet - Plataforma de Donaciones para Animales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center min-vh-100">
-    <div class="container">
-        <!-- Página de inicio de sesión -->
-        <div id="login-page" class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <h1 class="text-center mb-4 text-primary">Iniciar Sesión</h1>
-                        <form id="login-form">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Usuario:</label>
-                                <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario" required>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-heart-pulse me-2"></i>ConnectaPet
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#como-funciona">Cómo Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="asociaciones.html">Asociaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonios">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" id="login-nav">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="registro.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-white mb-4">Conectando Corazones, Salvando Vidas</h1>
+                    <p class="lead text-white mb-4">Tu plataforma de confianza para donaciones transparentes a asociaciones de bienestar animal.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="registro.html" class="btn btn-light btn-lg">Comenzar a Donar</a>
+                        <a href="asociaciones.html" class="btn btn-outline-light btn-lg">Ver Asociaciones</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg" alt="Animales rescatados" class="img-fluid rounded shadow hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section id="como-funciona" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">¿Cómo Funciona ConnectaPet?</h2>
+                <p class="lead">Transparencia y confianza en cada donación</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-search-heart display-4 text-primary"></i>
                             </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Contraseña:</label>
-                                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                            <h4>1. Encuentra</h4>
+                            <p>Descubre asociaciones de bienestar animal verificadas y conoce sus necesidades específicas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-currency-dollar display-4 text-primary"></i>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100 py-2">Iniciar Sesión</button>
-                            <div class="alert alert-danger mt-3 mb-0 text-center" id="error-message" style="display: none;">
-                                Usuario o contraseña incorrectos. Inténtalo de nuevo.
+                            <h4>2. Dona</h4>
+                            <p>Realiza donaciones seguras directamente a la asociación de tu elección.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="feature-icon mb-3">
+                                <i class="bi bi-graph-up-arrow display-4 text-primary"></i>
                             </div>
-                        </form>
+                            <h4>3. Sigue</h4>
+                            <p>Rastrea el impacto de tu donación y ve cómo se utilizan los fondos.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Página principal de Scrum -->
-        <div id="scrum-page" class="row justify-content-center" style="display: none;">
-            <div class="col-12">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <h1 class="text-center mb-4 text-primary">Introducción a Scrum</h1>
-                        
-                        <div class="scrum-intro mb-4 pb-3 border-bottom">
-                            <h2 class="text-purple">¿Qué es Scrum?</h2>
-                            <p class="mb-3">Scrum es un marco de trabajo ágil utilizado para el desarrollo de productos complejos. Se basa en principios de transparencia, inspección y adaptación, y se centra en la entrega iterativa e incremental de valor.</p>
-                            <p>En Scrum, el trabajo se organiza en sprints de tiempo fijo, generalmente de 2 a 4 semanas, durante los cuales el equipo trabaja para completar un conjunto predeterminado de tareas.</p>
-                        </div>
-                        
-                        <div class="event-selector mb-4">
-                            <h2 class="text-purple mb-3">Eventos de Scrum</h2>
-                            <div class="row g-3 align-items-end">
-                                <div class="col-md-8">
-                                    <label for="scrum-events" class="form-label">Selecciona un evento:</label>
-                                    <select class="form-select" id="scrum-events">
-                                        <option value="" disabled selected>Selecciona un evento de Scrum</option>
-                                        <option value="sprint">Sprint</option>
-                                        <option value="sprint-planning">Sprint Planning</option>
-                                        <option value="daily-scrum">Daily Scrum</option>
-                                        <option value="sprint-review">Sprint Review</option>
-                                        <option value="sprint-retrospective">Sprint Retrospective</option>
-                                    </select>
+    </section>
+
+    <!-- Asociaciones Destacadas -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Asociaciones Destacadas</h2>
+                <p class="lead">Conoce a algunas de las organizaciones que están haciendo la diferencia</p>
+            </div>
+            <div class="row g-4" id="asociaciones-destacadas">
+                <!-- Las asociaciones se cargarán con JavaScript -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="asociaciones.html" class="btn btn-primary btn-lg">Ver Todas las Asociaciones</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Lo Que Dicen Nuestros Usuarios</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-light text-dark">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="card-text">"Gracias a ConnectaPet, nuestra asociación ha podido recibir donaciones de manera segura y transparente. Los donantes confían más en nosotros."</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-person-circle display-6 text-primary"></i>
                                 </div>
-                                <div class="col-md-4">
-                                    <button id="view-details" class="btn btn-primary w-100">Ver detalles</button>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="mb-0">María Rodríguez</h6>
+                                    <small class="text-muted">Directora - Refugio Patitas Felices</small>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="event-details alert alert-info" id="event-details" style="display: none;">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-light text-dark">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="card-text">"Me encanta poder ver exactamente en qué se usa mi dinero. La transparencia de ConnectaPet me da confianza para seguir donando."</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-person-circle display-6 text-primary"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="mb-0">Carlos Méndez</h6>
+                                    <small class="text-muted">Donante frecuente</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-light text-dark">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                <i class="bi bi-star-half text-warning"></i>
+                            </div>
+                            <p class="card-text">"Como voluntario, ConnectaPet me ha permitido encontrar asociaciones que necesitan ayuda y coordinar mejor mi tiempo y recursos."</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-person-circle display-6 text-primary"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="mb-0">Ana López</h6>
+                                    <small class="text-muted">Voluntaria</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-heart-pulse me-2"></i>ConnectaPet</h5>
+                    <p>Plataforma de donaciones transparentes para asociaciones de bienestar animal.</p>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+                        <li><a href="asociaciones.html" class="text-white-50 text-decoration-none">Asociaciones</a></li>
+                        <li><a href="#como-funciona" class="text-white-50 text-decoration-none">Cómo Funciona</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-envelope me-2"></i>info@connectapet.com</li>
+                        <li><i class="bi bi-telephone me-2"></i>+506 2222-2222</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 ConnectaPet. Proyecto de Ambiente Web Cliente-Servidor.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./javascript/landing.js"></script>
 </body>
 </html>

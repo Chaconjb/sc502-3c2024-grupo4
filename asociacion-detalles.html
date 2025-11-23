@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Asociación - ConnectaPet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-heart-pulse me-2"></i>ConnectaPet
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="asociaciones.html">Asociaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transparencia.html">Transparencia</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" id="login-nav">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container py-5">
+        <div class="row">
+            <!-- Información de la Asociación -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img src="" class="img-fluid rounded mb-3" alt="Logo de la asociación" id="asociacion-imagen">
+                                <div class="d-grid gap-2">
+                                    <a href="donacion.html" class="btn btn-primary btn-lg" id="boton-donar">Donar Ahora</a>
+                                    <button class="btn btn-outline-primary" id="boton-contactar">Contactar</button>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h1 id="asociacion-nombre">Nombre de la Asociación</h1>
+                                <p class="text-muted" id="asociacion-ubicacion"><i class="bi bi-geo-alt"></i> Ubicación</p>
+                                <p id="asociacion-descripcion">Descripción de la asociación.</p>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-sm-6">
+                                        <h5>Misión</h5>
+                                        <p id="asociacion-mision">Misión de la asociación.</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5>Visión</h5>
+                                        <p id="asociacion-vision">Visión de la asociación.</p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5>Necesidades Actuales</h5>
+                                    <ul id="asociacion-necesidades">
+                                        <!-- Las necesidades se cargarán con JavaScript -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progreso de Metas -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Metas de Financiamiento</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="asociacion-metas">
+                            <!-- Las metas se cargarán con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animales Rescatados -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Animales Rescatados</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="asociacion-animales">
+                            <!-- Los animales se cargarán con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Información de Contacto -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Información de Contacto</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-envelope me-2"></i> <span id="asociacion-email">email@ejemplo.com</span></li>
+                            <li class="mb-2"><i class="bi bi-telephone me-2"></i> <span id="asociacion-telefono">+506 2222-2222</span></li>
+                            <li class="mb-2"><i class="bi bi-globe me-2"></i> <a href="#" id="asociacion-sitio-web">Sitio web</a></li>
+                            <li><i class="bi bi-geo-alt me-2"></i> <span id="asociacion-direccion">Dirección completa</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Estadísticas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h4 id="asociacion-animales-rescatados">0</h4>
+                                <small class="text-muted">Animales Rescatados</small>
+                            </div>
+                            <div class="col-6">
+                                <h4 id="asociacion-donaciones-recibidas">0</h4>
+                                <small class="text-muted">Donaciones Recibidas</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reportes de Transparencia -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Reportes de Transparencia</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush" id="asociacion-reportes">
+                            <!-- Los reportes se cargarán con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2024 ConnectaPet. Proyecto de Ambiente Web Cliente-Servidor.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./javascript/asociacion-detalle.js"></script>
+</body>
+</html>
