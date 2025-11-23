@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - ONG Ayudas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        /* header */
+        .app-header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #0d6efd; 
+        }
+        /* Estilo de tarjeta  */
+        .action-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+        .card-icon {
+            font-size: 3.5rem;
+        }
+    </style>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+                window.location.href = 'index.html'; 
+            }
+        });
+
+        //cerrar sesión
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+    </script>
+
+    <header class="app-header shadow-sm sticky-top">
+        <div class="container-fluid content-wrapper py-3 d-flex justify-content-between align-items-center">
+            <h2 class="h3 mb-0 text-primary fw-bold">
+                <i class="bi bi-heart-fill me-2"></i>  ONG Ayudas
+            </h2>
+            <div class="d-flex align-items-center">
+                <span class="d-none d-md-inline me-3 text-secondary">Bienvenido, Usuario ONG</span>
+                <button onclick="logout()" class="btn btn-outline-danger btn-sm">
+                    <i class="bi bi-box-arrow-right"></i> Salir
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow-1 content-wrapper">
+        <h3 class="mb-4 text-secondary border-bottom pb-2">Resumen General</h3>
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow border-0 h-100 action-card">
+                    <div class="card-body">
+                        <i class="bi bi-person-lines-fill card-icon text-success mb-2"></i>
+                        <h5 class="card-title text-muted">Voluntarios Activos</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow border-0 h-100 action-card">
+                    <div class="card-body">
+                        <i class="bi bi-bell-fill card-icon text-danger mb-2"></i>
+                        <h5 class="card-title text-muted">Solicitudes Pendientes</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow border-0 h-100 action-card">
+                    <div class="card-body">
+                        <i class="bi bi-cash-stack card-icon text-warning mb-2"></i>
+                        <h5 class="card-title text-muted">Fondos Necesarios</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center shadow border-0 h-100 action-card">
+                    <div class="card-body">
+                        <i class="bi bi-lightbulb-fill card-icon text-info mb-2"></i>
+                        <h5 class="card-title text-muted">Proyectos en Curso</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mb-4 text-secondary border-bottom pb-2">Opciones de Gestión</h3>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="text-decoration-none">
+                    <div class="card action-card shadow p-4 h-100 border-primary border-3 border-start">
+                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-search me-2"></i> Revisar Solicitudes</h5>
+                        <p class="card-text text-muted">Analiza y aprueba las peticiones de ayuda </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="text-decoration-none">
+                    <div class="card action-card shadow p-4 h-100 border-success border-3 border-start">
+                        <h5 class="card-title fw-bold text-success"><i class="bi bi-people-fill me-2"></i> Gestionar Voluntarios</h5>
+                        <p class="card-text text-muted">Organiza equipos, asigna tareas</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <a href="#" class="text-decoration-none">
+                    <div class="card action-card shadow p-4 h-100 border-warning border-3 border-start">
+                        <h5 class="card-title fw-bold text-warning"><i class="bi bi-bar-chart-fill me-2"></i> Ver Estadísticas</h5>
+                        <p class="card-text text-muted">Accede a los reportes de impacto, fondos y eficiencia de los proyectos.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
