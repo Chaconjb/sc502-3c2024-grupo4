@@ -1,31 +1,42 @@
 <?php
-require_once 'conexion.php';
+// php/login.php
+header('Content-Type: application/json; charset=utf-8');
+include 'conexion.php';
+session_start(); // Inicia la sesión para recordar al usuario
 
-$data = json_decode(file_get_contents('php://input'), true);
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
 
-if (!isset($data['username']) || !isset($data['password'])) {
-    echo json_encode(['error' => 'Faltan datos']);
-    exit;
-}
+try {
+    if (!$data) throw new Exception("Datos no recibidos.");
 
-$username = $data['username'];
-$password = $data['password'];
+    $email = $data['email'];
+    $password = $data['password'];
 
-// Buscar el usuario en la base de datos
-$stmt = $pdo->prepare('SELECT * FROM USUARIOS WHERE email = :username');
-$stmt->bindParam(':username', $username);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Buscamos al usuario por email
+    $sql = "SELECT usuario_id, nombre_completo, password_hash, tipo_usuario FROM USUARIOS WHERE email = :email";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// En producción, usar password_verify()
-if ($user && $user['password_hash'] === $password) { // Cambiar por password_verify()
-    echo json_encode([
-        'success' => true,
-        'user_id' => $user['usuario_id'],
-        'user_type' => $user['tipo_usuario'],
-        'user_name' => $user['nombre_completo']
-    ]);
-} else {
-    echo json_encode(['error' => 'Credenciales incorrectas']);
+    // Verificamos si existe el usuario y si la contraseña coincide
+    if ($user && password_verify($password, $user['password_hash'])) {
+        
+        // Guardamos datos en la Sesión de PHP
+        $_SESSION['user_id'] = $user['usuario_id'];
+        $_SESSION['user_name'] = $user['nombre_completo'];
+        $_SESSION['user_type'] = $user['tipo_usuario'];
+
+        echo json_encode([
+            'success' => true, 
+            'message' => '¡Bienvenido!',
+            'user_type' => $user['tipo_usuario']
+        ]);
+    } else {
+        throw new Exception("Correo o contraseña incorrectos.");
+    }
+
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
 ?>

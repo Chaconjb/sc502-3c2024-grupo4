@@ -1,57 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('login-form');
-    const errorMessage = document.getElementById('error-message');
+// javascript/login.js
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginForm');
+    const loginMessage = document.getElementById('loginMessage');
 
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
 
-        // Validación básica
-        if (!username || !password) {
-            showError('Por favor completa todos los campos');
-            return;
-        }
+        const data = {
+            email: document.getElementById('loginEmail').value,
+            password: document.getElementById('loginPassword').value
+        };
 
-        // Enviar datos al servidor
-        fetch('php/login.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Guardar datos de sesión
-                sessionStorage.setItem('isLoggedIn', 'true');
-                sessionStorage.setItem('userId', data.user_id);
-                sessionStorage.setItem('userType', data.user_type);
-                sessionStorage.setItem('userName', data.user_name);
-                
-                // Redirigir según tipo de usuario
-                if (data.user_type === 'Asociado' || data.user_type === 'Admin_Interno') {
-                    window.location.href = 'dashboard.html';
+        try {
+            const response = await fetch('php/login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Redirigir según el tipo de usuario
+                if (result.user_type === 'Asociado') {
+                    window.location.href = 'dashboard_asociacion.html';
                 } else {
                     window.location.href = 'home.html';
                 }
             } else {
-                showError(data.error || 'Credenciales incorrectas');
+                loginMessage.textContent = result.error;
+                loginMessage.style.display = 'block';
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showError('Error de conexión con el servidor');
-        });
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error de conexión con el servidor.");
+        }
     });
-
-    function showError(message) {
-        errorMessage.textContent = message;
-        errorMessage.style.display = 'block';
-        setTimeout(() => {
-            errorMessage.style.display = 'none';
-        }, 5000);
-    }
 });
