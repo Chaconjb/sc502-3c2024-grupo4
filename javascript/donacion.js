@@ -1,66 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const donationForm = document.getElementById('donationForm');
-    const donationMessage = document.getElementById('donationMessage');
 
-    donationForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('donationForm');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Detiene el envío normal para usar AJAX
+
+        // Capturamos los datos manualmente por ID
+        const datos = new FormData();
+        datos.append('amount', document.getElementById('amount').value);
+        datos.append('fullName', document.getElementById('fullName').value);
+        datos.append('email', document.getElementById('email').value);
+        datos.append('paymentMethod', document.getElementById('paymentMethod').value);
         
-        // Obtener datos del formulario
-        const amount = document.getElementById('amount').value;
-        const donationType = document.querySelector('input[name="donationType"]:checked').value;
-        const fullName = document.getElementById('fullName').value;
-        const email = document.getElementById('email').value;
-        const paymentMethod = document.getElementById('paymentMethod').value;
-        const message = document.getElementById('message').value;
-        const terms = document.getElementById('terms').checked;
+        const tipoSeleccionado = document.querySelector('input[name="donationType"]:checked');
+        datos.append('donationType', tipoSeleccionado ? tipoSeleccionado.value : 'general');
 
-        // Validaciones
-        if (!terms) {
-            mostrarMensajeDonacion('Debes aceptar los términos', 'danger');
-            return;
-        }
+        try {
+            // Enviamos al PHP
+            const respuesta = await fetch('php/realizar_donacion.php', {
+                method: 'POST',
+                body: datos
+            });
 
-        // Simular datos del usuario (en producción vendría de la sesión)
-        const userId = sessionStorage.getItem('userId') || 4; // Ejemplo: Daniel
-        const asociacionId = 1; // Patitas Felices
+            const resultado = await respuesta.json();
 
-        const data = {
-            usuario_id: userId,
-            asociacion_id: asociacionId,
-            monto: amount,
-            metodo_pago: paymentMethod
-        };
-
-        // Enviar al servidor
-        fetch('php/realizar_donacion.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(result => {
-            if (result.success) {
-                mostrarMensajeDonacion('¡Donación registrada exitosamente! Número de transacción: ' + result.donacion_id, 'success');
-                donationForm.reset();
-                
-                // Redirigir después de 3 segundos
-                setTimeout(() => {
-                    window.location.href = 'home.html';
-                }, 3000);
+            if (resultado.status === 'success') {
+                document.getElementById('donationMessage').style.display = 'block';
+                form.reset();
+                alert("¡Donación realizada con éxito!");
             } else {
-                mostrarMensajeDonacion(result.error || 'Error en la donación', 'danger');
+                alert("Error: " + resultado.message);
             }
-        })
-        .catch(error => {
-            mostrarMensajeDonacion('Error de conexión', 'danger');
-        });
+        } catch (error) {
+            console.error("Error detallado:", error);
+            alert("No se pudo conectar con el servidor PHP. Revisa la consola (F12).");
+        }
     });
-
-    function mostrarMensajeDonacion(texto, tipo) {
-        donationMessage.textContent = texto;
-        donationMessage.className = `alert alert-${tipo} text-center py-2`;
-        donationMessage.style.display = 'block';
-    }
 });

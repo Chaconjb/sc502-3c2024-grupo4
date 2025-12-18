@@ -1,16 +1,16 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-
+// php/conexion.php
 $host = 'localhost';
-$dbname = 'CONNECTAPET';
-$username = 'root'; 
-$password = '32764702dP'; 
+$dbname = 'connectapet'; // Asegúrate que en phpMyAdmin se llame así
+$username = 'root';      // Usuario por defecto de XAMPP
+$password = '';          // En XAMPP suele estar vacío. Si tú le pusiste pass, escríbelo.
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    // Configuramos para que nos avise si hay errores
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo json_encode(['error' => 'Error de conexión: ' . $e->getMessage()]);
-    exit;
+    // Si falla, enviamos el error en formato JSON para que el JS lo entienda
+    die(json_encode(['error' => 'Error de conexión: ' . $e->getMessage()]));
 }
 ?>
