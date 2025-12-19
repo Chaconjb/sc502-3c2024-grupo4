@@ -1,31 +1,55 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const filtroNombre = document.getElementById('filtroNombre');
-    const filtroProvincia = document.getElementById('filtroProvincia');
-    const btnAplicarFiltros = document.querySelector('button[type="button"]');
+document.addEventListener('DOMContentLoaded', () => {
+    const contenedor = document.getElementById('contenedorAsociaciones');
+    const btnFiltro = document.getElementById('btnAplicarFiltros');
+    const inputNombre = document.getElementById('filtroNombre');
+    const selectProvincia = document.getElementById('filtroProvincia');
 
-    // Cargar asociaciones al cargar la página
-    cargarAsociaciones();
+    const renderizarAsociaciones = (lista) => {
+        contenedor.innerHTML = '';
 
-    btnAplicarFiltros.addEventListener('click', function() {
-        cargarAsociaciones();
-    });
-
-    function cargarAsociaciones() {
-        const params = new URLSearchParams();
+        if (lista.length === 0) {
+            contenedor.innerHTML = '<div class="col-12 text-center text-white"><h3>No se encontraron resultados.</h3></div>';
+            return;
+        }
+        lista.forEach(aso => {
+            contenedor.innerHTML += `
+                <div class="col-md-4 mb-4">
+                    <article class="card h-100 shadow-sm border-0">
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="h5 text-primary fw-bold">${aso.nombre_asociacion}</h2>
+                            <p class="mb-1 text-muted"><strong>📍 Ubicación:</strong> ${aso.provincia}</p>
+                            <p class="flex-grow-1 mt-2">${aso.mision || 'Sin descripción.'}</p>
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success">Activa</span>
+                                <a href="asociacion-detalles.html?id=${aso.asociacion_id}" class="btn btn-primary btn-sm">
+                                    Ver detalles
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            `;
+        });
+    };
+    const buscarAsociaciones = async () => {
+        contenedor.innerHTML = '<p class="text-white text-center">...</p>';
         
-        if (filtroNombre.value) params.append('nombre', filtroNombre.value);
-        if (filtroProvincia.value) params.append('provincia', filtroProvincia.value);
+        const nombre = inputNombre.value;
+        const provincia = selectProvincia.value;
 
-        fetch(`php/obtener_asociaciones.php?${params.toString()}`)
-            .then(response => response.json())
-            .then(asociaciones => {
-                // Aquí podrías actualizar dinámicamente las tarjetas
-                console.log('Asociaciones cargadas:', asociaciones);
-                // Mostrar mensaje de demo
-                alert('Filtros aplicados (demo). En producción, se actualizarían las tarjetas.');
-            })
-            .catch(error => {
-                console.error('Error al cargar asociaciones:', error);
-            });
-    }
+        try {
+            const url = `php/obtener_asociaciones.php?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}`;
+            const resp = await fetch(url);
+            const datos = await resp.json();
+            
+            console.log("Datos recibidos para renderizar:", datos);
+            renderizarAsociaciones(datos);
+
+        } catch (error) {
+            console.error("Error:", error);
+            contenedor.innerHTML = '<p class="text-white text-center">Error al conectar con el servidor.</p>';
+        }
+    };
+    btnFiltro.addEventListener('click', buscarAsociaciones);
+    buscarAsociaciones();
 });

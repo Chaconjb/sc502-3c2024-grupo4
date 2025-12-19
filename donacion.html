@@ -4,20 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConnectaPet - Donación</title>
-
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- CSS original -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- CSS global del proyecto -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-    <!-- HEADER / MENÚ PRINCIPAL -->
     <header class="w-100">
         <nav class="d-flex justify-content-between align-items-center px-4 py-3 shadow-sm bg-white w-100">
             <div class="fw-bold fs-4 text-primary">
@@ -30,15 +21,12 @@
                 <li><a href="transparencia.html" class="text-decoration-none text-dark">Transparencia</a></li>
                 <li><a href="registro.html" class="text-decoration-none text-dark">Registrarse</a></li>
                 <li><a href="donacion.html" class="text-decoration-none text-dark">Donaciones</a></li>
+                <li><a href="login.html" class="text-decoration-none text-dark">Inicio de sesion</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="container flex-grow-1 py-5">
         <div class="row g-4">
-
-            <!-- Información de la campaña / asociación -->
             <div class="col-lg-5">
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
@@ -70,14 +58,12 @@
                 </div>
             </div>
 
-            <!-- Formulario de donación -->
             <div class="col-lg-7">
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <h2 class="h4 text-primary mb-3">Formulario de donación</h2>
 
                         <form id="donationForm">
-                            <!-- Monto -->
                             <div class="mb-3">
                                 <label for="amount" class="form-label">Monto de la donación (₡)</label>
                                 <input type="number" class="form-control" id="amount" min="1000" step="500" placeholder="Ej: 10000" required>
@@ -85,8 +71,6 @@
                                     Monto mínimo sugerido: ₡1 000
                                 </div>
                             </div>
-
-                            <!-- Tipo de donación -->
                             <div class="mb-3">
                                 <label class="form-label">Tipo de donación</label>
                                 <div class="form-check">
@@ -103,7 +87,6 @@
                                 </div>
                             </div>
 
-                            <!-- Datos personales básicos -->
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">Nombre completo</label>
                                 <input type="text" class="form-control" id="fullName" placeholder="Tu nombre y apellidos" required>
@@ -114,7 +97,6 @@
                                 <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
                             </div>
 
-                            <!-- Método de pago (simulado) -->
                             <div class="mb-3">
                                 <label for="paymentMethod" class="form-label">Método de pago</label>
                                 <select id="paymentMethod" class="form-select" required>
@@ -130,20 +112,16 @@
                                 <textarea id="message" class="form-control" rows="3" placeholder="Puedes dejar un mensaje o dedicatoria si lo deseas"></textarea>
                             </div>
 
-                            <!-- Checkbox de términos -->
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="terms" required>
                                 <label class="form-check-label" for="terms">
                                     Confirmo que la información proporcionada es correcta y autorizo el uso de mi donación para fines de bienestar animal.
                                 </label>
                             </div>
-
-                            <!-- Mensaje de resultado (simulado) -->
                             <div id="donationMessage" class="alert alert-success text-center py-2" style="display: none;">
                                 ¡Gracias por tu donación! Esta pantalla es una simulación para efectos del proyecto.
                             </div>
 
-                            <!-- Botones -->
                             <div class="d-flex justify-content-between mt-4">
                                 <a href="asociacion-detalles.html" class="btn btn-outline-secondary">
                                     Volver a detalles
@@ -160,12 +138,10 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="py-3 text-center text-light-50">
         <small>© 2024 ConnectaPet. Formulario de donación simulado.</small>
     </footer>
 
-    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="javascript/donacion.js"></script>
 </body>
