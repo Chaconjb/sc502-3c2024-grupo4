@@ -6,31 +6,38 @@ $asociacion = $_GET['asociacion'] ?? '';
 $anio = $_GET['anio'] ?? '';
 
 try {
-    $sql = "SELECT r.*, a.nombre_asociacion 
-            FROM reportes_transparencia r 
-            JOIN asociaciones a ON r.asociacion_id = a.asociacion_id 
+    $sql = "SELECT rt.*, a.nombre_asociacion 
+            FROM reportes_transparencia rt 
+            JOIN asociaciones a ON rt.asociacion_id = a.asociacion_id 
             WHERE 1=1";
     
     $params = [];
 
-    if (!empty($asociacion) && $asociacion !== 'Todas') {
+    if (!empty($asociacion) && $asociacion !== '') {
         $sql .= " AND a.nombre_asociacion = :aso";
         $params[':aso'] = $asociacion;
     }
 
-    if (!empty($anio) && $anio !== 'Todos') {
-        $sql .= " AND r.año = :anio";
-        $params[':anio'] = $anio;
+    if (!empty($anio) && $anio !== '') {
+        $sql .= " AND rt.año = :anio";
+        $params[':anio'] = (int)$anio;
     }
+
+    $sql .= " ORDER BY rt.fecha_publicacion DESC";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    ob_clean(); 
+    // Si no hay resultados, devolver array vacío
+    if (!$resultados) {
+        $resultados = [];
+    }
+
     echo json_encode($resultados);
 
 } catch (PDOException $e) {
+    http_response_code(500);
     echo json_encode(['error' => "Error de SQL: " . $e->getMessage()]);
 }
 ?>
