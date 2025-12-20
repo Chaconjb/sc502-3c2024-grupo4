@@ -4,24 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputNombre = document.getElementById('filtroNombre');
     const selectProvincia = document.getElementById('filtroProvincia');
 
+    if (!contenedor) {
+        console.error("Error: No se encontró el elemento 'contenedorAsociaciones'.");
+        return;
+    }
     const renderizarAsociaciones = (lista) => {
         contenedor.innerHTML = '';
 
-        if (lista.length === 0) {
-            contenedor.innerHTML = '<div class="col-12 text-center text-white"><h3>No se encontraron resultados.</h3></div>';
+        if (!lista || lista.length === 0) {
+            contenedor.innerHTML = '<div class="col-12 text-center text-white"><h3>No se encontraron asociaciones.</h3></div>';
             return;
         }
+
         lista.forEach(aso => {
             contenedor.innerHTML += `
                 <div class="col-md-4 mb-4">
                     <article class="card h-100 shadow-sm border-0">
                         <div class="card-body d-flex flex-column">
                             <h2 class="h5 text-primary fw-bold">${aso.nombre_asociacion}</h2>
-                            <p class="mb-1 text-muted"><strong>📍 Ubicación:</strong> ${aso.provincia}</p>
-                            <p class="flex-grow-1 mt-2">${aso.mision || 'Sin descripción.'}</p>
-                            <div class="mt-3 d-flex justify-content-between align-items-center">
-                                <span class="badge bg-success">Activa</span>
-                                <a href="asociacion-detalles.html?id=${aso.asociacion_id}" class="btn btn-primary btn-sm">
+                            <p class="mb-1 text-muted small"><strong>📍 Ubicación:</strong> ${aso.provincia || 'No especificada'}</p>
+                            <p class="flex-grow-1 mt-2 small text-secondary">
+                                ${aso.mision ? aso.mision.substring(0, 150) + '...' : 'Sin descripción disponible.'}
+                            </p>
+                            <div class="mt-3 d-flex justify-content-between align-items-center border-top pt-3">
+                                <span class="badge bg-success-subtle text-success border border-success">Activa</span>
+                                <a href="asociacion-detalles.html?id=${aso.asociacion_id}" class="btn btn-primary btn-sm px-3">
                                     Ver detalles
                                 </a>
                             </div>
@@ -31,25 +38,35 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
     };
+
     const buscarAsociaciones = async () => {
-        contenedor.innerHTML = '<p class="text-white text-center">...</p>';
+        contenedor.innerHTML = '<div class="col-12 text-center text-white"><p>Buscando asociaciones...</p></div>';
         
-        const nombre = inputNombre.value;
-        const provincia = selectProvincia.value;
+        const nombre = inputNombre ? inputNombre.value : '';
+        const provincia = selectProvincia ? selectProvincia.value : '';
 
         try {
-            const url = `php/obtener_asociaciones.php?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}`;
+            const url = `php/obtener_asociaciones.php?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&t=${Date.now()}`;
             const resp = await fetch(url);
-            const datos = await resp.json();
             
-            console.log("Datos recibidos para renderizar:", datos);
+            if (!resp.ok) throw new Error("Error en la respuesta del servidor");
+
+            const datos = await resp.json();
+            console.log("Datos cargados:", datos);
             renderizarAsociaciones(datos);
 
         } catch (error) {
-            console.error("Error:", error);
-            contenedor.innerHTML = '<p class="text-white text-center">Error al conectar con el servidor.</p>';
+            console.error("Error en buscarAsociaciones:", error);
+            contenedor.innerHTML = '<div class="col-12 text-center text-danger"><p>Error al cargar datos del servidor.</p></div>';
         }
     };
-    btnFiltro.addEventListener('click', buscarAsociaciones);
+
+    if (btnFiltro) {
+        btnFiltro.addEventListener('click', (e) => {
+            e.preventDefault();
+            buscarAsociaciones();
+        });
+    }
+
     buscarAsociaciones();
 });

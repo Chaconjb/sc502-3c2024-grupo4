@@ -11,43 +11,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cargar datos de la asociación
     cargarDatosAsociacion(asociacionId);
     
-    // Cargar campañas activas
     cargarCampaniasActivas(asociacionId);
     
-    // Evento para botón de donar
     if (btnDonar) {
         btnDonar.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Guardar asociación seleccionada para la donación
             sessionStorage.setItem('asociacionDonacion', asociacionId);
             sessionStorage.setItem('asociacionNombre', document.querySelector('h1').textContent);
-            
-            // Redirigir a página de donación
             window.location.href = 'donacion.html';
         });
     }
     
-    // Evento para botón de transparencia
     if (btnTransparencia) {
         btnTransparencia.addEventListener('click', function() {
-            // Guardar filtro para página de transparencia
             sessionStorage.setItem('filtroAsociacionTransparencia', asociacionId);
         });
     }
-    
-    // Simular carga de datos relacionados
     simularCargaDatosRelacionados(asociacionId);
 });
 
-/**
- * Carga los datos de la asociación desde el servidor
- */
 function cargarDatosAsociacion(asociacionId) {
-    // En producción, esto haría un fetch al servidor
     console.log(`Cargando datos para asociación ID: ${asociacionId}`);
     
-    // Simulación de datos (en producción vendría del backend)
     const asociaciones = {
         1: {
             nombre: "Refugio Patitas Felices",
@@ -82,8 +67,6 @@ function cargarDatosAsociacion(asociacionId) {
     };
     
     const datos = asociaciones[asociacionId] || asociaciones[1];
-    
-    // Actualizar la página con los datos
     document.querySelector('h1').textContent = datos.nombre;
     
     const ubicacionElement = document.querySelector('main p:nth-of-type(1)');
@@ -98,8 +81,6 @@ function cargarDatosAsociacion(asociacionId) {
     const descripcionElements = document.querySelectorAll('main p');
     if (descripcionElements[3]) descripcionElements[3].textContent = datos.descripcion;
     if (descripcionElements[4]) descripcionElements[4].textContent = datos.infoExtra;
-    
-    // Actualizar información rápida
     const listaInfo = document.querySelector('ul');
     if (listaInfo) {
         listaInfo.innerHTML = `
@@ -110,12 +91,7 @@ function cargarDatosAsociacion(asociacionId) {
         `;
     }
 }
-
-/**
- * Carga las campañas activas de la asociación
- */
 function cargarCampaniasActivas(asociacionId) {
-    // Simulación de datos de campañas
     const campanias = {
         1: [
             {
@@ -175,30 +151,20 @@ function cargarCampaniasActivas(asociacionId) {
     }
 }
 
-/**
- * Simula la carga de datos relacionados
- */
 function simularCargaDatosRelacionados(asociacionId) {
-    // Mostrar loading
     const cardBodies = document.querySelectorAll('.card-body');
     cardBodies.forEach(card => {
         card.classList.add('loading');
     });
-    
-    // Simular carga con timeout
     setTimeout(() => {
         cardBodies.forEach(card => {
             card.classList.remove('loading');
         });
-        
-        // Mostrar notificación de carga completa
         mostrarNotificacion('Datos cargados correctamente', 'success');
     }, 1000);
 }
 
-/**
- * Muestra una notificación en la página
- */
+
 function mostrarNotificacion(mensaje, tipo = 'info') {
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${tipo} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
@@ -210,7 +176,6 @@ function mostrarNotificacion(mensaje, tipo = 'info') {
     
     document.body.appendChild(alertDiv);
     
-    // Auto-eliminar después de 5 segundos
     setTimeout(() => {
         if (alertDiv.parentNode) {
             alertDiv.remove();
@@ -218,9 +183,7 @@ function mostrarNotificacion(mensaje, tipo = 'info') {
     }, 5000);
 }
 
-/**
- * Formatea números como moneda
- */
+
 function formatearMoneda(monto) {
     return new Intl.NumberFormat('es-CR', {
         style: 'currency',
@@ -228,7 +191,6 @@ function formatearMoneda(monto) {
     }).format(monto);
 }
 
-// Agregar estilos para estado de loading
 const style = document.createElement('style');
 style.textContent = `
     .loading {

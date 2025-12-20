@@ -1,16 +1,20 @@
 /* Estilos personalizados para complementar Bootstrap */
 :root {
-    --primary-color: #2575fc;
-    --secondary-color: #6a11cb;
-    --purple-color: #6a11cb;
+    --primary-color: #d5ddea;
+    --secondary-color: #1c1b1e;
+    --purple-color: #919191;
 }
 
 body {
     background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-    color: #333;
+    color: #9c5555;
     line-height: 1.6;
     min-height: 100vh;
     padding: 20px;
+}
+.hover-shadow:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease;
 }
 
 .card {
@@ -67,7 +71,6 @@ h2.text-purple {
     margin-bottom: 15px;
 }
 
-/* Responsividad adicional */
 @media (max-width: 768px) {
     .card-body {
         padding: 1.5rem;
@@ -94,4 +97,105 @@ h2.text-purple {
     h2 {
         font-size: 1.4rem;
     }
+}
+:root {
+    --primary-color: #2575fc;
+    --secondary-color: #6a11cb;
+    --white: #ffffff;
+}
+
+body {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, .playfair { 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700;
+}
+
+.hero-campanas {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1548191265-cc70d3d45ba1?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    color: var(--white);
+    border-radius: 0 0 50px 50px;
+}
+
+.campana-card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: var(--white);
+    height: 100%;
+}
+
+.campana-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.img-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.campana-card:hover .img-container img {
+    transform: scale(1.1);
+}
+
+.custom-progress {
+    height: 10px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    border: none;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.info-box {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    border-left: 6px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    .hero-campanas { border-radius: 0 0 30px 30px; padding: 50px 0; }
+    .img-container { height: 200px; }
 }

@@ -116,6 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Cargar reportes al inicio
     cargarReportes();
 });

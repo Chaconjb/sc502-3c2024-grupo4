@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectaPet - Próximas Campañas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
+        h1, h2, .playfair { font-family: 'Playfair Display', serif; }
+
+        .hero-campanas {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1548191265-cc70d3d45ba1?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            border-radius: 0 0 50px 50px;
+        }
+        .campana-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: white;
+        }
+        .campana-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .img-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .campana-card:hover .img-container img {
+            transform: scale(1.1);
+        }
+        .overlay-status {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .custom-progress {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+        }
+        .info-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid #0d6efd;
+        }
+    </style>
+    <header class="w-100">
+        <nav class="d-flex justify-content-between align-items-center px-4 py-3 shadow-sm bg-white w-100">
+            <div class="fw-bold fs-4 text-primary">
+                ConnectaPet
+            </div>
+
+            <ul class="d-flex gap-4 list-unstyled mb-0">
+                <li><a href="home.html" class="text-decoration-none text-dark fw-semibold">Inicio</a></li>
+                <li><a href="asociaciones.html" class="text-decoration-none text-dark">Asociaciones</a></li>
+                <li><a href="transparencia.html" class="text-decoration-none text-dark">Transparencia</a></li>
+                <li><a href="registro.html" class="text-decoration-none text-dark">Registrarse</a></li>
+                <li><a href="donacion.html" class="text-decoration-none text-dark">Donaciones</a></li>
+                <li><a href="login.html" class="text-decoration-none text-dark">Inicio de sesion</a></li>
+                <li><a href="campanas.html" class="text-decoration-none text-dark">campañas</a></li>
+            </ul>
+        </nav>
+    </header>
+</head>
+<body>
+
+    <section class="hero-campanas">
+        <div class="container text-center">
+            <h1 class="display-2 fw-bold mb-3">Causas que Inspiran</h1>
+            <p class="fs-4 fw-light">No es solo dinero, es una segunda oportunidad para quienes no tienen voz.</p>
+        </div>
+    </section>
+
+    <main class="container my-5 py-5">
+        
+        <div class="row mb-5 align-items-center bg-white rounded-5 shadow-sm overflow-hidden p-0">
+            <div class="col-lg-6 p-0">
+                <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=1200" class="img-fluid w-100" style="height: 500px; object-fit: cover;">
+            </div>
+            <div class="col-lg-6 p-5">
+                <span class="text-primary fw-bold text-uppercase tracking-widest">Campaña del Mes</span>
+                <h2 class="display-5 fw-bold mt-2">Proyecto "Granero Seguro"</h2>
+                <p class="text-muted fs-5 mt-3">Estamos construyendo un santuario para animales de granja rescatados del maltrato. Necesitamos recaudar fondos para el techado y sistema de riego.</p>
+                <div class="custom-progress">
+                    <div class="progress-fill" style="width: 65%;"></div>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <span><strong>65%</strong> recaudado</span>
+                    <span class="text-primary fw-bold">Meta: ₡2,500,000</span>
+                </div>
+                <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow">Donar a esta causa</button>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+            <h2 class="display-4 fw-bold">Campañas en Camino</h2>
+            <div class="mx-auto bg-primary" style="height: 3px; width: 80px;"></div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="campana-card shadow-sm h-100">
+                    <div class="img-container">
+                        <span class="overlay-status bg-success text-white">Activa</span>
+                        <img src="https://images.unsplash.com/photo-1597677332867-c064bca881af?q=80&w=800">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="fw-bold">Móvil Veterinaria 2024</h4>
+                        <p class="text-muted small">Llevaremos atención gratuita a zonas rurales de Guanacaste. Ayúdanos con el equipamiento médico.</p>
+                        <div class="custom-progress"><div class="progress-fill" style="width: 30%;"></div></div>
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-muted">Faltan ₡800,000</span>
+                            <span class="fw-bold text-primary">30%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="campana-card shadow-sm h-100">
+                    <div class="img-container">
+                        <span class="overlay-status bg-info text-dark">Próximamente</span>
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=800">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="fw-bold">Festival "AdoptaFest"</h4>
+                        <p class="text-muted small">Evento masivo de adopción en el Parque Metropolitano La Sabana. Patrocina los kits de bienvenida.</p>
+                        <div class="text-primary mt-3 small fw-bold"><i class="far fa-calendar-alt me-1"></i> Inicia en: 15 días</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="campana-card shadow-sm h-100">
+                    <div class="img-container">
+                        <span class="overlay-status bg-danger text-white">Urgente</span>
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="fw-bold">Castración Masiva</h4>
+                        <p class="text-muted small">Meta: 200 esterilizaciones en comunidades de bajos recursos. Evitemos el abandono.</p>
+                        <div class="custom-progress"><div class="progress-fill" style="width: 85%;"></div></div>
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-muted">¡Casi lograda!</span>
+                            <span class="fw-bold text-danger">85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5 pt-5 g-4">
+            <div class="col-md-6">
+                <div class="info-box shadow-sm h-100">
+                    <h3 class="fw-bold mb-3"><i class="fas fa-shield-check text-primary me-2"></i>Seguridad Total</h3>
+                    <p>Cada colón donado es rastreado por nuestro sistema de transparencia. Recibirás un correo con el comprobante de uso de fondos una vez finalizada la campaña.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-box shadow-sm h-100">
+                    <h3 class="fw-bold mb-3"><i class="fas fa-handshake text-primary me-2"></i>¿Eres empresa?</h3>
+                    <p>Contamos con programas de Responsabilidad Social Empresarial. Tu marca puede ser patrocinadora oficial de una de estas campañas de impacto nacional.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <h3 class="playfair text-primary mb-4">ConnectaPet</h3>
+                    <p class="text-secondary">Transformando la vida de los animales en Costa Rica a través de la tecnología y la solidaridad ciudadana.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-4">Navegar</h5>
+                    <ul class="list-unstyled text-secondary">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Asociaciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Donaciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Transparencia</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4">Contacto</h5>
+                    <p class="text-secondary mb-1"><i class="fas fa-envelope me-2"></i> info@connectapet.cr</p>
+                    <p class="text-secondary"><i class="fas fa-phone me-2"></i> +506 8000-PETS</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4">Síguenos</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <p class="text-center text-secondary small">© 2024 ConnectaPet. Proyecto de Bienestar Animal.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
